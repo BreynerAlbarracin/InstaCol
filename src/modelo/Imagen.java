@@ -1,5 +1,6 @@
 package modelo;
 
+import herramientas.Objeto;
 import java.awt.Image;
 import java.io.File;
 
@@ -7,7 +8,7 @@ import java.io.File;
  *
  * @author rodrigoescobarlopez
  */
-public class Imagen extends herramientas.Objeto{
+public class Imagen extends herramientas.Objeto {
 
     private Image imagen;
     private int id, meGusta, codImagenPerfil;
@@ -16,11 +17,11 @@ public class Imagen extends herramientas.Objeto{
 
     /**
      * Contrusctor de la clase
-     * 
+     *
      * @param imagen
      * @param id
      * @param megusta
-     * @param codImagenPerfil 
+     * @param codImagenPerfil
      */
     public Imagen(Image imagen, int id, int megusta, int codImagenPerfil) {
         this.imagen = imagen;
@@ -88,5 +89,33 @@ public class Imagen extends herramientas.Objeto{
     @Override
     public String toString() {
         return "imagen{" + "imagen=" + imagen + ", id=" + id + ", megusta=" + meGusta + ", codimagen_Perfil=" + codImagenPerfil + '}';
+    }
+
+    /**
+     * Metodo que realiza un clonado de la imagen actual
+     *
+     * @return clon del objeto actual
+     */
+    @Override
+    public Objeto clon() {
+        return new Imagen(imagen, id, meGusta, codImagenPerfil);
+    }
+
+    /**
+     * Metodo que permite comprar dos imagenes por su ID
+     *
+     * @param obj
+     * @return returna 0 si son iguales, 1 si obj es menor o -1 si obj es mayor
+     */
+    @Override
+    public int igual(Objeto obj) {
+        Imagen i = (Imagen) obj;
+
+        if (id > i.getId()) {
+            return 1;
+        } else if (id < i.getId()) {
+            return -1;
+        }
+        return 0;
     }
 }

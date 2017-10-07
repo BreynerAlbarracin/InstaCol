@@ -58,13 +58,18 @@ public class Comentario extends herramientas.Objeto {
         this.codImagenComen = codImagenComen;
     }
 
+    /**
+     * Metodo que realiza un clonado del comentario actual
+     *
+     * @return clon del objeto actual
+     */
     @Override
     public Objeto clon() {
         return new Comentario(mensaje, idComentario, codPerfilComen, codImagenComen);
     }
 
     /**
-     * Metodo que permite comprar dos comentarios
+     * Metodo que permite comprar dos comentarios por su id
      *
      * @param obj
      * @return returna 0 si son iguales, 1 si obj es menor o -1 si obj es mayor

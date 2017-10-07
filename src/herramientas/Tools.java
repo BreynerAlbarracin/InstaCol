@@ -42,7 +42,7 @@ public class Tools {
      * metodo
      */
     public static LinkedList<Objeto> ordenamiento(LinkedList<Objeto> objetos, String metodo) {
-
+        return objetos;
     }
 
     /**
@@ -54,19 +54,7 @@ public class Tools {
      */
     public static Objeto busqueda(LinkedList<Objeto> objetos, Objeto b) {
 
-        return null;
-    }
-
-    private static LinkedList<Objeto> ordenamientoAsc(LinkedList<Objeto> elementos) {
-
-    }
-
-    private static LinkedList<Objeto> ordenamientoDesc(LinkedList<Objeto> elementos) {
-
-    }
-
-    private static void busquedaRec() {
-
+        return b;
     }
 
     /**
@@ -90,4 +78,19 @@ public class Tools {
 
         return null;
     }
+
+    //<editor-fold defaultstate="collapsed" desc="Metodos Recursivos">
+    private static LinkedList<Objeto> ordenamientoAsc(LinkedList<Objeto> elementos) {
+        return elementos;
+    }
+
+    private static LinkedList<Objeto> ordenamientoDesc(LinkedList<Objeto> elementos) {
+        return elementos;
+    }
+
+    private static void busquedaRec() {
+
+    }
+//</editor-fold>
+
 }

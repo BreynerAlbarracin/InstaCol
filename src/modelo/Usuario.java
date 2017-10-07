@@ -1,5 +1,7 @@
 package modelo;
 
+import herramientas.Objeto;
+
 /**
  *
  * @author rodrigoescobarlopez
@@ -19,6 +21,7 @@ public class Usuario extends herramientas.Objeto {
         this.idusuario = idusuario;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getter && Setter">
     public String getNombre() {
         return nombre;
     }
@@ -65,5 +68,34 @@ public class Usuario extends herramientas.Objeto {
 
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
+    }
+    //</editor-fold>
+
+    /**
+     * Metodo que realiza un clonado del usuario actual
+     *
+     * @return clon del objeto actual
+     */
+    @Override
+    public Objeto clon() {
+        return new Usuario(nombre, apellido, correo, clave, fecha, idusuario);
+    }
+
+    /**
+     * Metodo que permite comprar dos perfiles por su id
+     *
+     * @param obj
+     * @return returna 0 si son iguales, 1 si obj es menor o -1 si obj es mayor
+     */
+    @Override
+    public int igual(Objeto obj) {
+        Usuario us = (Usuario) obj;
+
+        if (idusuario > us.getIdusuario()) {
+            return 1;
+        } else if (idusuario < us.getIdusuario()) {
+            return -1;
+        }
+        return 0;
     }
 }
