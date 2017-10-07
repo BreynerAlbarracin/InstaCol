@@ -4,7 +4,7 @@ package modelo;
  *
  * @author rodrigoescobarlopez
  */
-public class Usuario {
+public class Usuario extends herramientas.Objeto {
 
     private String nombre, apellido, correo, clave;
     private String fecha;

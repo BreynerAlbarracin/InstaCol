@@ -1,5 +1,6 @@
 package DataBase;
 
+import herramientas.Tools;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
@@ -53,12 +54,12 @@ public class Insercion {
 
                 return true;
             } catch (SQLException ex) {
-                modelo.Tools.imprimirC(ex.getMessage());
+                herramientas.Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
-                    modelo.Tools.imprimirC(ex.getMessage());
+                    herramientas.Tools.imprimirC(ex.getMessage());
                 }
             }
         }
@@ -82,7 +83,7 @@ public class Insercion {
             PreparedStatement ps = null;
             try {
 
-                modelo.Tools.imprimirC(perfil.toString());
+                herramientas.Tools.imprimirC(perfil.toString());
 
                 sql = "insert into perfil "
                         + "(nombre_perfil,"
@@ -110,7 +111,7 @@ public class Insercion {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
-                    modelo.Tools.imprimirC(ex.getMessage());
+                    herramientas.Tools.imprimirC(ex.getMessage());
                 }
             }
         }
@@ -150,12 +151,12 @@ public class Insercion {
 
                 return true;
             } catch (SQLException ex) {
-                modelo.Tools.imprimirC(ex.getMessage());
+                herramientas.Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
-                    modelo.Tools.imprimirC(ex.getMessage());
+                    herramientas.Tools.imprimirC(ex.getMessage());
                 }
             }
         }
@@ -197,12 +198,12 @@ public class Insercion {
 
                 return true;
             } catch (SQLException ex) {
-                modelo.Tools.imprimirC(ex.getMessage());
+                herramientas.Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
-                    modelo.Tools.imprimirC(ex.getMessage());
+                    herramientas.Tools.imprimirC(ex.getMessage());
                 }
             }
         }
@@ -248,12 +249,12 @@ public class Insercion {
 
                 return true;
             } catch (SQLException | FileNotFoundException ex) {
-                modelo.Tools.imprimirC(ex.getMessage());
+                herramientas.Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
                 } catch (SQLException ex) {
-                    modelo.Tools.imprimirC(ex.getMessage());
+                    herramientas.Tools.imprimirC(ex.getMessage());
                 }
             }
         }

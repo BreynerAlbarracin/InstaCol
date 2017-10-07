@@ -7,13 +7,21 @@ import java.io.File;
  *
  * @author rodrigoescobarlopez
  */
-public class Imagen {
+public class Imagen extends herramientas.Objeto{
 
     private Image imagen;
     private int id, meGusta, codImagenPerfil;
     private String ruta;
     private File archivo;
 
+    /**
+     * Contrusctor de la clase
+     * 
+     * @param imagen
+     * @param id
+     * @param megusta
+     * @param codImagenPerfil 
+     */
     public Imagen(Image imagen, int id, int megusta, int codImagenPerfil) {
         this.imagen = imagen;
         this.id = id;

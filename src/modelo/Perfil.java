@@ -1,17 +1,23 @@
 package modelo;
 
-import java.io.File;
-
 /**
  *
  * @author Usaka Rokujou
  */
-public class Perfil {
+public class Perfil extends herramientas.Objeto{
 
     String nombrePerfil;
     int idPerfil, codUsuario;
     Imagen fotoPerfil;
 
+    /**
+     * Contructor que permite crear un perfil con una imagen asignada
+     *
+     * @param nombrePerfil
+     * @param idPerfil
+     * @param codUsuario
+     * @param fotoPerfil
+     */
     public Perfil(String nombrePerfil, int idPerfil, int codUsuario, Imagen fotoPerfil) {
         this.nombrePerfil = nombrePerfil;
         this.idPerfil = idPerfil;
@@ -19,6 +25,13 @@ public class Perfil {
         this.fotoPerfil = fotoPerfil;
     }
 
+    /**
+     * Contructor que permite agregar un perfil sin imagen asignada
+     *
+     * @param nombrePerfil
+     * @param idPerfil
+     * @param codUsuario
+     */
     public Perfil(String nombrePerfil, int idPerfil, int codUsuario) {
         this.nombrePerfil = nombrePerfil;
         this.idPerfil = idPerfil;
