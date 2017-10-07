@@ -67,7 +67,7 @@ public class Insercion {
     }
 //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Perfil Con Imagen">
+    //<editor-fold defaultstate="collapsed" desc="Perfil Con ImagenPost">
     /**
      * Metodo que permite insertar un perfil INCLUIDA LA IMAGEN
      *
@@ -75,7 +75,7 @@ public class Insercion {
      * @return retorna true si la inserción fue correcta, y false si hubo algun
      * error
      */
-    public static boolean sqlInsertPerfil(Perfil perfil) {
+    public static boolean sqlInsertPerfilIMG(Perfil perfil) {
 
         String sql;
 
@@ -105,7 +105,7 @@ public class Insercion {
                 Conexion.getConexion().commit();
 
                 return true;
-            } catch (SQLException | FileNotFoundException ex) {
+            } catch (SQLException | FileNotFoundException | NullPointerException ex) {
                 Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
@@ -119,15 +119,15 @@ public class Insercion {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Perfil Sin Imagen">
+    //<editor-fold defaultstate="collapsed" desc="Perfil Sin ImagenPost">
     /**
-     * Permite insertar un perfil con una imagen
+     * Permite insertar un perfil SIN INCLUIR AL IMAGEN
      *
      * @param perfil
      * @return retorna true si la inserción fue correcta, y false si hubo algun
      * error
      */
-    public static boolean sqlInsertPerfilIMG(Perfil perfil) {
+    public static boolean sqlInsertPerfil(Perfil perfil) {
 
         String sql;
 
@@ -211,14 +211,14 @@ public class Insercion {
     }
 //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Imagen">
+    //<editor-fold defaultstate="collapsed" desc="ImagenPost">
     /**
      * Metodo que permite insertar una imagen en un perfil
      *
      * @param imagen
      * @return true si ela inserción fue exitosa o false si hubo algun error
      */
-    public static boolean sqlInsertImagen(Imagen imagen) {
+    public static boolean sqlInsertImagen(ImagenPost imagen) {
 
         String sql;
 
@@ -238,8 +238,8 @@ public class Insercion {
                 ps = Conexion.getConexion().prepareStatement(sql);
 
                 ps.setBinaryStream(1,
-                        new FileInputStream(imagen.getArchivo()),
-                        imagen.getArchivo().length());
+                        new FileInputStream(imagen.getImagen().getArchivo()),
+                        imagen.getImagen().getArchivo().length());
 
                 ps.setInt(2, imagen.getMeGusta());
                 ps.setInt(3, imagen.getCodImagenPerfil());

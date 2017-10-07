@@ -12,19 +12,9 @@ public class Perfil extends herramientas.Objeto {
     int idPerfil, codUsuario;
     Imagen fotoPerfil;
 
-    /**
-     * Contructor que permite crear un perfil con una imagen asignada
-     *
-     * @param nombrePerfil
-     * @param idPerfil
-     * @param codUsuario
-     * @param fotoPerfil
-     */
-    public Perfil(String nombrePerfil, int idPerfil, int codUsuario, Imagen fotoPerfil) {
+    public Perfil(String nombrePerfil, int codUsuario) {
         this.nombrePerfil = nombrePerfil;
-        this.idPerfil = idPerfil;
         this.codUsuario = codUsuario;
-        this.fotoPerfil = fotoPerfil;
     }
 
     public Perfil(String nombrePerfil, int codUsuario, Imagen fotoPerfil) {
@@ -33,22 +23,11 @@ public class Perfil extends herramientas.Objeto {
         this.fotoPerfil = fotoPerfil;
     }
 
-    public Perfil(String nombrePerfil, int codUsuario) {
-        this.nombrePerfil = nombrePerfil;
-        this.codUsuario = codUsuario;
-    }
-
-    /**
-     * Contructor que permite agregar un perfil sin imagen asignada
-     *
-     * @param nombrePerfil
-     * @param idPerfil
-     * @param codUsuario
-     */
-    public Perfil(String nombrePerfil, int idPerfil, int codUsuario) {
+    public Perfil(String nombrePerfil, int idPerfil, int codUsuario, Imagen fotoPerfil) {
         this.nombrePerfil = nombrePerfil;
         this.idPerfil = idPerfil;
         this.codUsuario = codUsuario;
+        this.fotoPerfil = fotoPerfil;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
@@ -83,7 +62,7 @@ public class Perfil extends herramientas.Objeto {
     public void setFotoPerfil(Imagen fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
-    //</editor-fold>
+//</editor-fold>
 
     @Override
     public String toString() {

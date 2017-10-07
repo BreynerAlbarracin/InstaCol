@@ -1,85 +1,28 @@
 package modelo;
 
-import herramientas.Objeto;
 import java.awt.Image;
 import java.io.File;
 
 /**
  *
- * @author rodrigoescobarlopez
+ * @author Usaka Rokujou
  */
-public class Imagen extends herramientas.Objeto {
+public class Imagen {
 
-    private Image imagen;
-    private int id, meGusta, codImagenPerfil;
     private String ruta;
     private File archivo;
+    Image imagen;
 
-    /**
-     * Contrusctor de la clase
-     *
-     * @param imagen
-     * @param id
-     * @param megusta
-     * @param codImagenPerfil
-     */
-    public Imagen(Image imagen, int id, int megusta, int codImagenPerfil) {
-        this.imagen = imagen;
-        this.id = id;
-        this.meGusta = megusta;
-        this.codImagenPerfil = codImagenPerfil;
-    }
-
-    public Imagen(Image imagen, int id, int meGusta, int codImagenPerfil, String ruta) {
-        this.imagen = imagen;
-        this.id = id;
-        this.meGusta = meGusta;
-        this.codImagenPerfil = codImagenPerfil;
+    public Imagen(String ruta) {
         this.ruta = ruta;
         this.archivo = new File(ruta);
     }
 
-    public Imagen(int id, int meGusta, int codImagenPerfil, String ruta) {
-        this.id = id;
-        this.meGusta = meGusta;
-        this.codImagenPerfil = codImagenPerfil;
-        this.ruta = ruta;
-        archivo = new File(ruta);
-    }
-
-    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
-    public Image getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(Image imagen) {
+    public Imagen(Image imagen) {
         this.imagen = imagen;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getMeGusta() {
-        return meGusta;
-    }
-
-    public void setMeGusta(int meGusta) {
-        this.meGusta = meGusta;
-    }
-
-    public int getCodImagenPerfil() {
-        return codImagenPerfil;
-    }
-
-    public void setCodImagenPerfil(int codImagenPerfil) {
-        this.codImagenPerfil = codImagenPerfil;
-    }
-
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public String getRuta() {
         return ruta;
     }
@@ -95,42 +38,13 @@ public class Imagen extends herramientas.Objeto {
     public void setArchivo(File archivo) {
         this.archivo = archivo;
     }
-    //</editor-fold>
 
-    @Override
-    public String toString() {
-        return "imagen{\n"
-                + "imagen=" + imagen + "\n"
-                + "id=" + id + "\n"
-                + "megusta=" + meGusta + "\n"
-                + "codimagen_Perfil=" + codImagenPerfil + '}';
+    public Image getImagen() {
+        return imagen;
     }
 
-    /**
-     * Metodo que realiza un clonado de la imagen actual
-     *
-     * @return clon del objeto actual
-     */
-    @Override
-    public Objeto clon() {
-        return new Imagen(imagen, id, meGusta, codImagenPerfil);
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
     }
-
-    /**
-     * Metodo que permite comprar dos imagenes por su ID
-     *
-     * @param obj
-     * @return returna 0 si son iguales, 1 si obj es menor o -1 si obj es mayor
-     */
-    @Override
-    public int igual(Objeto obj) {
-        Imagen i = (Imagen) obj;
-
-        if (id > i.getId()) {
-            return 1;
-        } else if (id < i.getId()) {
-            return -1;
-        }
-        return 0;
-    }
+//</editor-fold>
 }
