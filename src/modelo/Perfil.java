@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.File;
+
 /**
  *
  * @author Usaka Rokujou
@@ -7,30 +9,28 @@ package modelo;
 public class Perfil {
 
     String nombrePerfil;
-    Imagen fotoPerfil;
     int idPerfil, codUsuario;
+    Imagen fotoPerfil;
 
-    public Perfil(String nombre, Imagen foto_perfil, int idPerfil, int codUsuario) {
-        this.nombrePerfil = nombre;
-        this.fotoPerfil = foto_perfil;
+    public Perfil(String nombrePerfil, int idPerfil, int codUsuario, Imagen fotoPerfil) {
+        this.nombrePerfil = nombrePerfil;
+        this.idPerfil = idPerfil;
+        this.codUsuario = codUsuario;
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public Perfil(String nombrePerfil, int idPerfil, int codUsuario) {
+        this.nombrePerfil = nombrePerfil;
         this.idPerfil = idPerfil;
         this.codUsuario = codUsuario;
     }
 
-    public String getNombre() {
+    public String getNombrePerfil() {
         return nombrePerfil;
     }
 
-    public void setNombre(String nombre) {
-        this.nombrePerfil = nombre;
-    }
-
-    public Imagen getFoto_perfil() {
-        return fotoPerfil;
-    }
-
-    public void setFoto_perfil(Imagen foto_perfil) {
-        this.fotoPerfil = foto_perfil;
+    public void setNombrePerfil(String nombrePerfil) {
+        this.nombrePerfil = nombrePerfil;
     }
 
     public int getIdPerfil() {
@@ -47,6 +47,14 @@ public class Perfil {
 
     public void setCodUsuario(int codUsuario) {
         this.codUsuario = codUsuario;
+    }
+
+    public Imagen getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(Imagen fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 
 }

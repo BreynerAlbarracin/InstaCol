@@ -1,14 +1,11 @@
 package DataBase;
 
-import control.BaseDatos;
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.image.Image;
 import modelo.Perfil;
-import modelo.Usuario;
+import modelo.*;
 
 /**
  *
@@ -36,7 +33,7 @@ public class Insercion {
         if (Conexion.crearConexion()) {
             PreparedStatement ps = null;
             try {
-                System.out.println(usuario.toString());
+                Tools.imprimirC(usuario.toString());
 
                 sql = "insert into usuarios "
                         + "(nombre_usuario,"
@@ -64,7 +61,7 @@ public class Insercion {
             } finally {
                 try {
                     ps.close();
-                } catch (SQLException | NullPointerException ex) {
+                } catch (SQLException ex) {
                     modelo.Tools.imprimirC(ex.getMessage());
                 }
             }
@@ -96,26 +93,30 @@ public class Insercion {
 
                 sql = "insert into perfil "
                         + "(nombre_perfil,"
-                        + "foto_perfil,"
-                        + "cod_usuario) "
-                        + "values(?,?,?,?)";
+                        + "cod_usuario, "
+                        + "foto_perfil)"
+                        + "values(?,?,?)";
 
                 Conexion.getConexion().setAutoCommit(false);
                 ps = Conexion.getConexion().prepareStatement(sql);
-                ps.setString(1, perfil.getNombre());
-                ps.setBinaryStream(2, new FileInputStream(perfil.getImagen()), (int) perfil.getImagen().length());
-                ps.setInt(3, perfil.getCodUsuario());
+
+                ps.setString(1, perfil.getNombrePerfil());
+                ps.setInt(2, perfil.getCodUsuario());
+                ps.setBinaryStream(3,
+                        new FileInputStream(perfil.getFotoPerfil().getArchivo()),
+                        (int) perfil.getFotoPerfil().getArchivo().length()
+                );
 
                 ps.executeUpdate();
                 Conexion.getConexion().commit();
 
                 return true;
-            } catch (SQLException ex) {
-                Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException | FileNotFoundException ex) {
+                Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
-                } catch (SQLException | NullPointerException ex) {
+                } catch (SQLException ex) {
                     modelo.Tools.imprimirC(ex.getMessage());
                 }
             }
@@ -130,7 +131,8 @@ public class Insercion {
      *
      * @param nombre
      * @param codUsuario
-     * @return
+     * @return retorna true si la inserción fue correcta, y false si hubo algun
+     * error
      */
     public static boolean sqlInsertPerfilIMG(Perfil perfil) {
 
@@ -139,7 +141,7 @@ public class Insercion {
         if (Conexion.crearConexion()) {
             PreparedStatement ps = null;
             try {
-                System.out.println(perfil.toString());
+                Tools.imprimirC(perfil.toString());
 
                 sql = "insert into perfil "
                         + "(nombre_perfil,"
@@ -148,7 +150,7 @@ public class Insercion {
 
                 Conexion.getConexion().setAutoCommit(false);
                 ps = Conexion.getConexion().prepareStatement(sql);
-                ps.setString(1, perfil.getNombre());
+                ps.setString(1, perfil.getNombrePerfil());
                 ps.setInt(2, perfil.getCodUsuario());
 
                 ps.executeUpdate();
@@ -156,12 +158,11 @@ public class Insercion {
 
                 return true;
             } catch (SQLException ex) {
-                Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-
+                modelo.Tools.imprimirC(ex.getMessage());
             } finally {
                 try {
                     ps.close();
-                } catch (SQLException | NullPointerException ex) {
+                } catch (SQLException ex) {
                     modelo.Tools.imprimirC(ex.getMessage());
                 }
             }
@@ -171,7 +172,88 @@ public class Insercion {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="comentario">
+    public static boolean sqlInsertComentario(Comentario comentario) {
+
+        String sql;
+
+        if (Conexion.crearConexion()) {
+            PreparedStatement ps = null;
+            try {
+                Tools.imprimirC(comentario.toString());
+
+                sql = "insert into comentario "
+                        + "(mensaje,"
+                        + "cod_perfil_comentario,"
+                        + "cod_imagen_comentario)"
+                        + "values(?,?,?)";
+
+                Conexion.getConexion().setAutoCommit(false);
+                ps = Conexion.getConexion().prepareStatement(sql);
+
+                ps.setString(1, comentario.getMensaje());
+                ps.setInt(2, comentario.getCodPerfilComen());
+                ps.setInt(3, comentario.getCodImagenComen());
+
+                ps.executeUpdate();
+                Conexion.getConexion().commit();
+
+                return true;
+            } catch (SQLException ex) {
+                modelo.Tools.imprimirC(ex.getMessage());
+            } finally {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    modelo.Tools.imprimirC(ex.getMessage());
+                }
+            }
+        }
+        return false;
+    }
 //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="imagen">
+    public static boolean sqlInsertImagen(Imagen imagen) {
+
+        String sql;
+
+        if (Conexion.crearConexion()) {
+            PreparedStatement ps = null;
+
+            try {
+                Tools.imprimirC(imagen.toString());
+
+                sql = "insert into imagen "
+                        + "(imagen,"
+                        + "me_gusta_imagen,"
+                        + "cod_perfil_imagen)"
+                        + "values(?,?,?)";
+
+                Conexion.getConexion().setAutoCommit(false);
+                ps = Conexion.getConexion().prepareStatement(sql);
+
+                ps.setBinaryStream(1,
+                        new FileInputStream(imagen.getArchivo()),
+                        imagen.getArchivo().length());
+
+                ps.setInt(2, imagen.getMeGusta());
+                ps.setInt(3, imagen.getCodImagenPerfil());
+
+                ps.executeUpdate();
+                Conexion.getConexion().commit();
+
+                return true;
+            } catch (SQLException | FileNotFoundException ex) {
+                modelo.Tools.imprimirC(ex.getMessage());
+            } finally {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    modelo.Tools.imprimirC(ex.getMessage());
+                }
+            }
+        }
+        return false;
+    }
 //</editor-fold>
 }
