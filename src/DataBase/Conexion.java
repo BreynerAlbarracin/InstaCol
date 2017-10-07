@@ -15,6 +15,12 @@ public class Conexion {
     private static Statement st;
 
     /**
+     * Constructor fundamental de la clase
+     */
+    public Conexion() {
+    }
+
+    /**
      * Método utilizado para establecer la conexión con la base de datos
      * instacol
      *
@@ -35,6 +41,7 @@ public class Conexion {
         return true;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public static Connection getConexion() {
         return conexion;
     }
@@ -42,4 +49,5 @@ public class Conexion {
     public static Statement getSt() {
         return st;
     }
+    //</editor-fold>
 }

@@ -18,11 +18,7 @@ public class Insercion {
      * Metodo para insertar un usuario a la base de datos La fecha debe tener el
      * formato (AAAA/MM/DD)
      *
-     * @param nombre
-     * @param apellido
-     * @param correo
-     * @param clave
-     * @param fecha
+     * @param usuario
      * @return estado regresa el estado de la conexión, true si se logro
      * insertar el usuario, falso en caso contrario.
      */
@@ -74,10 +70,7 @@ public class Insercion {
     /**
      * Metodo que permite insertar un perfil INCLUIDA LA IMAGEN
      *
-     * @param nombre
-     * @param fotoPerfil
-     * @param imagen
-     * @param codUsuario
+     * @param perfil
      * @return retorna true si la inserción fue correcta, y false si hubo algun
      * error
      */
@@ -129,8 +122,7 @@ public class Insercion {
     /**
      * Permite insertar un perfil con una imagen
      *
-     * @param nombre
-     * @param codUsuario
+     * @param perfil
      * @return retorna true si la inserción fue correcta, y false si hubo algun
      * error
      */
@@ -171,7 +163,13 @@ public class Insercion {
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="comentario">
+    //<editor-fold defaultstate="collapsed" desc="Comentario">
+    /**
+     * Metodo que permite la inserción de un comentario en una imagen
+     *
+     * @param comentario
+     * @return true si el comentario fue añadido o false si hubo algun error
+     */
     public static boolean sqlInsertComentario(Comentario comentario) {
 
         String sql;
@@ -212,7 +210,13 @@ public class Insercion {
     }
 //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="imagen">
+    //<editor-fold defaultstate="collapsed" desc="Imagen">
+    /**
+     * Metodo que permite insertar una imagen en un perfil
+     *
+     * @param imagen
+     * @return true si ela inserción fue exitosa o false si hubo algun error
+     */
     public static boolean sqlInsertImagen(Imagen imagen) {
 
         String sql;
