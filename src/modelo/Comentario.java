@@ -26,6 +26,13 @@ public class Comentario extends herramientas.Objeto {
         this.codImagenComen = codImagenComen;
     }
 
+    public Comentario(String mensaje, int codPerfilComen, int codImagenComen) {
+        this.mensaje = mensaje;
+        this.codPerfilComen = codPerfilComen;
+        this.codImagenComen = codImagenComen;
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public String getMensaje() {
         return mensaje;
     }
@@ -56,6 +63,16 @@ public class Comentario extends herramientas.Objeto {
 
     public void setCodImagenComen(int codImagenComen) {
         this.codImagenComen = codImagenComen;
+    }
+    //</editor-fold>
+
+    @Override
+    public String toString() {
+        return "Comentario{\n"
+                + "mensaje:" + mensaje + "\n"
+                + "idComentario=" + idComentario + "\n"
+                + "codPerfilComen=" + codPerfilComen + "\n"
+                + "codImagenComen=" + codImagenComen + '}';
     }
 
     /**

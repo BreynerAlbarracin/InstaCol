@@ -21,7 +21,15 @@ public class Usuario extends herramientas.Objeto {
         this.idusuario = idusuario;
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Getter && Setter">
+    public Usuario(String nombre, String apellido, String correo, String clave, String fecha) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.clave = clave;
+        this.fecha = fecha;
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public String getNombre() {
         return nombre;
     }
@@ -70,6 +78,17 @@ public class Usuario extends herramientas.Objeto {
         this.idusuario = idusuario;
     }
     //</editor-fold>
+
+    @Override
+    public String toString() {
+        return "Usuario{\n"
+                + "nombre=" + nombre + "\n"
+                + "apellido=" + apellido + "\n"
+                + "correo=" + correo + "\n"
+                + "clave=" + clave + "\n"
+                + "fecha=" + fecha + "\n"
+                + "idusuario=" + idusuario + '}';
+    }
 
     /**
      * Metodo que realiza un clonado del usuario actual

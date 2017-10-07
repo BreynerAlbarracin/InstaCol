@@ -6,7 +6,7 @@ import herramientas.Objeto;
  *
  * @author Usaka Rokujou
  */
-public class Perfil extends herramientas.Objeto{
+public class Perfil extends herramientas.Objeto {
 
     String nombrePerfil;
     int idPerfil, codUsuario;
@@ -27,6 +27,17 @@ public class Perfil extends herramientas.Objeto{
         this.fotoPerfil = fotoPerfil;
     }
 
+    public Perfil(String nombrePerfil, int codUsuario, Imagen fotoPerfil) {
+        this.nombrePerfil = nombrePerfil;
+        this.codUsuario = codUsuario;
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public Perfil(String nombrePerfil, int codUsuario) {
+        this.nombrePerfil = nombrePerfil;
+        this.codUsuario = codUsuario;
+    }
+
     /**
      * Contructor que permite agregar un perfil sin imagen asignada
      *
@@ -40,6 +51,7 @@ public class Perfil extends herramientas.Objeto{
         this.codUsuario = codUsuario;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public String getNombrePerfil() {
         return nombrePerfil;
     }
@@ -70,6 +82,16 @@ public class Perfil extends herramientas.Objeto{
 
     public void setFotoPerfil(Imagen fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
+    }
+    //</editor-fold>
+
+    @Override
+    public String toString() {
+        return "Perfil{\n"
+                + "nombrePerfil=" + nombrePerfil + "\n"
+                + "idPerfil=" + idPerfil + "\n"
+                + "codUsuario=" + codUsuario + "\n"
+                + "fotoPerfil=" + fotoPerfil + '}';
     }
 
     /**

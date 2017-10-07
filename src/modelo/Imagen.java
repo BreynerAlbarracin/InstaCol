@@ -30,6 +30,15 @@ public class Imagen extends herramientas.Objeto {
         this.codImagenPerfil = codImagenPerfil;
     }
 
+    public Imagen(Image imagen, int id, int meGusta, int codImagenPerfil, String ruta) {
+        this.imagen = imagen;
+        this.id = id;
+        this.meGusta = meGusta;
+        this.codImagenPerfil = codImagenPerfil;
+        this.ruta = ruta;
+        this.archivo = new File(ruta);
+    }
+
     public Imagen(int id, int meGusta, int codImagenPerfil, String ruta) {
         this.id = id;
         this.meGusta = meGusta;
@@ -38,6 +47,7 @@ public class Imagen extends herramientas.Objeto {
         archivo = new File(ruta);
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getters && Setters">
     public Image getImagen() {
         return imagen;
     }
@@ -85,10 +95,15 @@ public class Imagen extends herramientas.Objeto {
     public void setArchivo(File archivo) {
         this.archivo = archivo;
     }
+    //</editor-fold>
 
     @Override
     public String toString() {
-        return "imagen{" + "imagen=" + imagen + ", id=" + id + ", megusta=" + meGusta + ", codimagen_Perfil=" + codImagenPerfil + '}';
+        return "imagen{\n"
+                + "imagen=" + imagen + "\n"
+                + "id=" + id + "\n"
+                + "megusta=" + meGusta + "\n"
+                + "codimagen_Perfil=" + codImagenPerfil + '}';
     }
 
     /**

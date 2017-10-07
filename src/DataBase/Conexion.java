@@ -1,5 +1,6 @@
 package DataBase;
 
+import herramientas.Tools;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -36,6 +37,7 @@ public class Conexion {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + bd, usuario, clave);
             st = conexion.createStatement();
         } catch (SQLException | ClassNotFoundException ex) {
+            Tools.imprimirC(ex.getMessage());
             return false;
         }
         return true;
