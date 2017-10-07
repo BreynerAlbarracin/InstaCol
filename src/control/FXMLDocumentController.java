@@ -1,7 +1,7 @@
-package instacol;
+package control;
 
 import control.BaseDatos;
-import control.usuario;
+import modelo.Usuario;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,7 +45,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void enviarBD(ActionEvent event) throws ParseException {
-        LinkedList<usuario> usuario = new LinkedList<>();
+        LinkedList<Usuario> usuario = new LinkedList<>();
         String nombre = nombreTex.getText();
         String apellido = apellidoTex.getText();
         String correo = correoTex.getText();
@@ -53,7 +53,7 @@ public class FXMLDocumentController implements Initializable {
         int idusuario = Integer.parseInt(idTex.getText());
         String fecha = fechaTex.getText();
 
-        usuario usr = new usuario(nombre, apellido, correo, clave, idusuario, fecha);
+        Usuario usr = new Usuario(nombre, apellido, correo, clave, idusuario, fecha);
         usuario.add(usr);
         usr.insertarUsuario(usuario);
     }
@@ -63,7 +63,7 @@ public class FXMLDocumentController implements Initializable {
         String idBuscar = idTex.getText();
         boolean conexion;
         BaseDatos objbases = new BaseDatos();
-        LinkedList<usuario> usuarioB = new LinkedList();
+        LinkedList<Usuario> usuarioB = new LinkedList();
         conexion = objbases.crearConexion();
         if (conexion) {
             usuarioB = objbases.buscarId(idBuscar);
@@ -88,7 +88,7 @@ public class FXMLDocumentController implements Initializable {
         conexion = objbases.crearConexion();
         int idborrar = Integer.parseInt(idTex.getText());
         if (conexion) {
-            objbases.borarId(idborrar);
+            objbases.borrarId(idborrar);
         } else {
             JOptionPane.showInputDialog("no hay conexion");
         }

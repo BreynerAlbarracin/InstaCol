@@ -12,9 +12,9 @@ package control;
 public class perfil {
     
     private String nombrePerfil , identifiacionUsuario;
-    private imagen imagen;
+    private Imagen imagen;
 
-    public perfil(String nombrePerfil, String identifiacionUsuario, imagen imagen) {
+    public perfil(String nombrePerfil, String identifiacionUsuario, Imagen imagen) {
         this.nombrePerfil = nombrePerfil;
         this.identifiacionUsuario = identifiacionUsuario;
         this.imagen = imagen;
@@ -36,11 +36,11 @@ public class perfil {
         this.identifiacionUsuario = identifiacionUsuario;
     }
 
-    public imagen getImagen() {
+    public Imagen getImagen() {
         return imagen;
     }
 
-    public void setImagen(imagen imagen) {
+    public void setImagen(Imagen imagen) {
         this.imagen = imagen;
     }
 
